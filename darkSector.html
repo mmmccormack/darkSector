@@ -3,155 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <style>
-    body {
-        font-family: "Jersey 10", sans-serif;
-        font-weight: 400;
-        font-style: normal;
-        color: #FAFAFA;
-        background: #0A0A0A;
-        font-size: 1.4rem;
-        touch-action: none;
-    }
-    .healthMobile {
-        display: none;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        font-size: 5rem;
-    }
-    .health {
-        display: flex;
-        flex-direction: column;
-    }
-    .healthNumber {
-        text-align: center;
-        position: relative;
-        top: -100px;
-        right: -4px;
-    }
-    input {
-        transform: rotate(-90deg);
-    }
-    /*********** Baseline, reset styles ***********/
-    input[type="range"] {
-      -webkit-appearance: none;
-      appearance: none;
-      background: transparent;
-      cursor: pointer;
-      width: 15rem;
-    }
-
-    /* Removes default focus */
-    input[type="range"]:focus {
-      outline: none;
-    }
-
-    /******** Chrome, Safari, Opera and Edge Chromium styles ********/
-    /* slider track */
-    input[type="range"]::-webkit-slider-runnable-track {
-      background-color: #463e3e;
-      border-radius: 0rem;
-      height: 2rem;
-      border: 4px solid #FAFAFA;
-    }
-
-    /* slider thumb */
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none; /* Override default look */
-      appearance: none;
-      margin-top: -20px; /* Centers thumb on the track */
-      background-color: #0a0a0a;
-      outline: 4px solid #fafafa;
-      border-radius: 0rem;
-      height: 4rem;
-      width: 2rem;
-    }
-
-    input[type="range"]:focus::-webkit-slider-thumb {
-      outline: 4px solid #dbdbdb;
-    }
-
-    /*********** Firefox styles ***********/
-    /* slider track */
-    input[type="range"]::-moz-range-track {
-        background-color: #463e3e;
-        border-radius: 0rem;
-        height: 2rem;
-        outline: 4px solid #FAFAFA;
-    }
-
-    /* slider thumb */
-    input[type="range"]::-moz-range-thumb {
-        background-color: #0a0a0a;
-        outline: 4px solid #fafafa;
-        border-radius: 0rem;
-        height: 4rem;
-        width: 2rem;
-        z-index: 100;
-    }
-
-    input[type="range"]:focus::-moz-range-thumb{
-      outline: 3px solid #dbdbdb;
-    }
-    /* non-mobile */
-    .scoreGrid {
-        display: flex;
-        justify-content: center;
-    }
-    .number {
-        color: #fafafa;
-        text-align: center;
-        width: 20px;
-    }
-    .health {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-row-gap: 2px;
-    }
-    .active {
-        background: lightgray;
-        font-weight: 700;
-        font-size: 2rem;
-    }
-    button {
-        height: 25px;
-        width: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #666666;
-    }
-    .resetHealth {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1rem;
-        letter-spacing: 0.1rem;
-        width: 50%;
-        max-width: 500px;
-        margin: 10px auto;
-        background: #0a0a0a;
-        font-family: "Jersey 10", sans-serif;
-        font-weight: 400;
-        font-style: normal;
-        font-size: 1.4rem;
-        color: #FAFAFA;
-        height: 50px;
-    }
-    @media (max-width: 680px) {
-        .healthMobile {
-            display: flex;
-        }
-        .largeGrid {
-            display: none;
-        }
-    }
+    
 </style>
 <body>
     <div class="largeGrid">
@@ -182,39 +41,5 @@
         </div>
     </div>
 </body>
-<script>
-    const scoreGrid = document.querySelector('.scoreGrid');
-    const toggleButton = button => {
-        !button.innerHTML ? button.innerHTML = `O` : button.innerHTML = ``;
-        button.classList.toggle('active');
-    }
-    for (let i = 1; i < 13; i++) {
-        const healthColumn = document.createElement('div');
-        healthColumn.classList.add(`health`, `col${i}`)
-        for (let i = 1; i < 13; i++) {
-            const marker = document.createElement('button');
-            marker.classList.add('marker');
-            healthColumn.appendChild(marker);
-        }
-        scoreGrid.appendChild(healthColumn)
-    }
-
-    const buttons = document.querySelectorAll('.marker');
-    buttons.forEach(button => button.addEventListener('click', () => toggleButton(button)));
-
-    const resetHealth = document.querySelector('.resetHealth');
-    resetHealth.addEventListener('click', () => {
-        buttons.forEach(button => {
-            button.classList.remove('active');
-            button.innerHTML = '';
-        })
-    });
-    const healthNumber = document.querySelector('.healthNumber');
-    const healthSlider = document.getElementById('healthSlider');
-    healthNumber.innerHTML = healthSlider.value;
-    healthSlider.addEventListener('input', () => {
-        const healthValue = healthSlider.value;
-        healthNumber.innerHTML = healthValue;
-    });
-</script>
+<script src="./script.js"></script>
 </html>
