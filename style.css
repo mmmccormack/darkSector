@@ -106,10 +106,10 @@ input[type="range"]:focus::-moz-range-thumb{
 .active {
     background: lightgray;
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.2rem;
 }
 button {
-    height: 25px;
+    height: 24px;
     width: 50px;
     display: flex;
     align-items: center;

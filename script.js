@@ -1,6 +1,6 @@
 const scoreGrid = document.querySelector('.scoreGrid');
     const toggleButton = button => {
-        !button.innerHTML ? button.innerHTML = `O` : button.innerHTML = ``;
+        !button.innerHTML ? button.innerHTML = `o` : button.innerHTML = ``;
         button.classList.toggle('active');
     }
     for (let i = 1; i < 13; i++) {
